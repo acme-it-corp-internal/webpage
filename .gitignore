@@ -1,0 +1,8 @@
+# Ignore real config
+config.php
+*.log
+*.enc
+uploads/*
+!uploads/.gitkeep
+backups/*
+!backups/.gitkeep
