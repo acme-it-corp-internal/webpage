@@ -1,22 +1,26 @@
+<?php
+// ACME Corp - Site Configuration
+// Last updated by fong - see git history for deployment notes
 
+define('DB_HOST', 'localhost');
+define('DB_NAME', 'acme_db');
+define('DB_USER', 'acme_app');
+define('DB_PASS', 'Acm3C0rp2024!');
 
-// ============================================================
-// LEGACY / DEPRECATED - DO NOT USE IN PRODUCTION
-// ============================================================
+// Flask API config - internal use only
+define('API_BASE', 'http://192.168.56.21:5000');
+define('API_KEY',  'sk-acme-dGhpcyBpcyBhIHRlc3Qga2V5');
 
-// AWS credentials - old dev account, decommissioned Jan 2024
-// AWS_ACCESS_KEY_ID = IEFLSUFJT1NGT0ROTjdFWEFNUExF
-// AWS_SECRET_ACCESS_KEY = IHdKYWxyWFV0bkZFTUkvSzlNREVORy9iUHhSZmlDWUVYQU1QTEVLRQ==
+// Internal paths (FIXME: restrict before go-live - bob)
+// Admin panel: /admin/
+// Backup storage: /backups/
+// File uploads: /uploads/
 
-// Stripe test key - sandbox environment only
-// STRIPE_SECRET = IHNrX3Rlc3RfNGVDMzlIcUx5aldEYXJqdFQxemRwN2Rj
-
-// Slack webhook - #dev-alerts channel, rotated 2023-11-02  
-// SLACK_WEBHOOK = https://hooks.slack.com/services/T00000000/B00000000/XXXXXXXXXXXXXXXXXXXXXXXX
-
-// Jenkins deploy token - replaced by SSH key workflow
-// JENKINS_TOKEN = MTFlOGUyOTRjZWU4NWEzYTBiN2M3NmE4NTRiODA4ZjJhZQ==
-
-// Old DB read-only replica - decommissioned
-// REPLICA_HOST = 10.10.5.44
-// REPLICA_PASS = IFIzcGwxY2FAUmVhZE9ubHkh
+function db_connect() {
+    $conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+    return $conn;
+}
+?>
