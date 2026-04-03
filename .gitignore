@@ -1,5 +1,5 @@
 # Ignore real config
-config.php
+# # config.php intentionally tracked intentionally tracked
 *.log
 *.enc
 uploads/*
