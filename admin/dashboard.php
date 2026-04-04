@@ -9,11 +9,9 @@ if (!isset($_SESSION['user'])) {
 
 $conn = db_connect();
 
-// Fetch users for display
 $users     = $conn->query("SELECT id, username, password, role, email FROM users");
 $employees = $conn->query("SELECT id, name, role, department, salary, email, notes FROM employees");
 
-// DB dump trigger - writes plaintext dump to /backups/
 if (isset($_GET['export'])) {
     $dump = "-- ACME Corp DB Export\n-- Generated: " . date('Y-m-d H:i:s') . "\n\n";
     $dump .= "-- users --\n";
