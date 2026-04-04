@@ -10,7 +10,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $conn = db_connect();
 
-    // Vulnerable query - no prepared statements
     $query = "SELECT * FROM users WHERE username='$user' AND password=MD5('$pass')";
     $result = $conn->query($query);
 
